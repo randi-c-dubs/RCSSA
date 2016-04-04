@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CONFIG_NULL_EXCEPTION_H
 #define CONFIG_NULL_EXCEPTION_H
 

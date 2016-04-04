@@ -1,3 +1,4 @@
+#pragma once
 #ifndef ROBOSUBCONTROL_H
 #define ROBOSUBCONTROL_H
 
@@ -7,7 +8,7 @@
 #include <highgui.h>
 #include "ConfigNullException.h"
 #include "Object.h"
-#include "ObjectTracking.h"
+#include "Camera.h"
 #include "Task.h"
 
 using namespace std;
@@ -20,10 +21,9 @@ private:
 
 	// member fields
 	int mode;				// Mode submarine is in
+	Camera front;
 
 	// utility functions
-	void calibrateCamera();
-
 public:
 	static const int CALIBRATION = 1;
 	static const int AVOID_OBJECTS = 2;

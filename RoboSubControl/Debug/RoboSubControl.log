@@ -1,69 +1,21 @@
-﻿Build started 3/25/2016 3:45:11 PM.
+﻿Build started 4/4/2016 12:11:19 PM.
      1>Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ObjectTracking.cpp RoboSubControl.cpp main.cpp
-         ObjectTracking.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp
+         Camera.cpp
      1>c:\users\randi\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.h(41): warning C4244: 'initializing' : conversion from 'double' to 'const int', possible loss of data
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.cpp(64): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.cpp(105): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.cpp(130): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.cpp(131): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-         Generating Code...
-         Compiling...
-         main.cpp
-     1>c:\users\randi\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.h(41): warning C4244: 'initializing' : conversion from 'double' to 'const int', possible loss of data
-         RoboSubControl.cpp
-     1>c:\users\randi\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\objecttracking.h(41): warning C4244: 'initializing' : conversion from 'double' to 'const int', possible loss of data
-     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\robosubcontrol.cpp(21): warning C4101: 'motorControl' : unreferenced local variable
-         Generating Code...
+     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\camera.cpp(62): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\camera.cpp(103): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Randi\Downloads\opencv\build\x86\vc12\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opencv_core249d.lib opencv_highgui249d.lib opencv_imgproc249d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.lib" /MACHINE:X86 Debug\main.obj
-         Debug\ObjectTracking.obj
+         Debug\Camera.obj
          Debug\Object.obj
          Debug\RoboSubControl.obj
          Debug\Task.obj
-     1>ObjectTracking.obj : error LNK2005: "int H_MIN" (?H_MIN@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int H_MAX" (?H_MAX@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int S_MIN" (?S_MIN@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int S_MAX" (?S_MAX@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int V_MIN" (?V_MIN@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int V_MAX" (?V_MAX@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int edgeThresh" (?edgeThresh@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int lowThreshold" (?lowThreshold@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int ratio" (?ratio@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "int kernel_size" (?kernel_size@@3HA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "char * window_name" (?window_name@@3PADA) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "class cv::Mat dst" (?dst@@3VMat@cv@@A) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "class cv::Mat detected_edges" (?detected_edges@@3VMat@cv@@A) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "class cv::Mat src" (?src@@3VMat@cv@@A) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2005: "class cv::Mat src_gray" (?src_gray@@3VMat@cv@@A) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int H_MIN" (?H_MIN@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int H_MAX" (?H_MAX@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int S_MIN" (?S_MIN@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int S_MAX" (?S_MAX@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int V_MIN" (?V_MIN@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int V_MAX" (?V_MAX@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int edgeThresh" (?edgeThresh@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int lowThreshold" (?lowThreshold@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int ratio" (?ratio@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "int kernel_size" (?kernel_size@@3HA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "char * window_name" (?window_name@@3PADA) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "class cv::Mat dst" (?dst@@3VMat@cv@@A) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "class cv::Mat detected_edges" (?detected_edges@@3VMat@cv@@A) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "class cv::Mat src" (?src@@3VMat@cv@@A) already defined in main.obj
-     1>RoboSubControl.obj : error LNK2005: "class cv::Mat src_gray" (?src_gray@@3VMat@cv@@A) already defined in main.obj
-     1>ObjectTracking.obj : error LNK2019: unresolved external symbol "void __cdecl drawObjects(class std::vector<class Object,class std::allocator<class Object> >,class cv::Mat,class cv::Mat,class std::vector<class std::vector<class cv::Point_<int>,class std::allocator<class cv::Point_<int> > >,class std::allocator<class std::vector<class cv::Point_<int>,class std::allocator<class cv::Point_<int> > > > >,class std::vector<class cv::Vec<int,4>,class std::allocator<class cv::Vec<int,4> > >,class std::vector<class cv::Rect_<int>,class std::allocator<class cv::Rect_<int> > >)" (?drawObjects@@YAXV?$vector@VObject@@V?$allocator@VObject@@@std@@@std@@VMat@cv@@1V?$vector@V?$vector@V?$Point_@H@cv@@V?$allocator@V?$Point_@H@cv@@@std@@@std@@V?$allocator@V?$vector@V?$Point_@H@cv@@V?$allocator@V?$Point_@H@cv@@@std@@@std@@@2@@2@V?$vector@V?$Vec@H$03@cv@@V?$allocator@V?$Vec@H$03@cv@@@std@@@2@V?$vector@V?$Rect_@H@cv@@V?$allocator@V?$Rect_@H@cv@@@std@@@2@@Z) referenced in function "void __cdecl trackFilteredObject(class Object,class cv::Mat,class cv::Mat,class cv::Mat &)" (?trackFilteredObject@@YAXVObject@@VMat@cv@@1AAV23@@Z)
-     1>RoboSubControl.obj : error LNK2019: unresolved external symbol "void __cdecl morphOps(class cv::Mat)" (?morphOps@@YAXVMat@cv@@@Z) referenced in function "void __cdecl calibrateCamera(void)" (?calibrateCamera@@YAXXZ)
-     1>RoboSubControl.obj : error LNK2019: unresolved external symbol "private: void __thiscall RoboSubControl::calibrateCamera(void)" (?calibrateCamera@RoboSubControl@@AAEXXZ) referenced in function "public: void __thiscall RoboSubControl::startRoboSubControl(void)" (?startRoboSubControl@RoboSubControl@@QAEXXZ)
-     1>C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe : fatal error LNK1120: 3 unresolved externals
-     1>Done Building Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" (Build target(s)) -- FAILED.
+         RoboSubControl.vcxproj -> C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe
+     1>Done Building Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:04.85
+Time Elapsed 00:00:01.86

@@ -92,13 +92,13 @@
   <ItemGroup>
     <ClInclude Include="ConfigNullException.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="ObjectTracking.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="RoboSubControl.h" />
     <ClInclude Include="Task.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ObjectTracking.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="RoboSubControl.cpp" />
     <ClCompile Include="Task.cpp" />

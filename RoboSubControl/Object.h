@@ -1,4 +1,7 @@
 #pragma once
+#ifndef OBJECT_H
+#define OBJECT_H
+
 #include <string>
 #include <cv.h>
 #include <highgui.h>
@@ -44,3 +47,4 @@ private:
 	Scalar HSVmin, HSVmax;
 	Scalar Color;
 };
+#endif
