@@ -95,6 +95,30 @@ void Object::setYPos(int y){
 
 }
 
+Vec4f Object::getVector(){
+
+	return Object::vector;
+
+}
+
+void Object::setVector(Vec4f x){
+
+	Object::vector = x;
+
+}
+
+Rect Object::getBoundRect(){
+
+	return Object::rect;
+
+}
+
+void Object::setBoundRect(Rect x){
+
+	Object::rect = x;
+
+}
+
 Scalar Object::getHSVmin(){
 
 	return Object::HSVmin;

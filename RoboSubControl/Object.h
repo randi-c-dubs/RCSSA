@@ -23,6 +23,12 @@ public:
 	int getYPos();
 	void setYPos(int y);
 
+	Vec4f getVector();
+	void setVector(Vec4f);
+
+	Rect getBoundRect();
+	void setBoundRect(Rect);
+
 	Scalar getHSVmin();
 	Scalar getHSVmax();
 
@@ -43,6 +49,8 @@ public:
 private:
 
 	int xPos, yPos;
+	Vec4f vector;
+	Rect rect;
 	string type;
 	Scalar HSVmin, HSVmax;
 	Scalar Color;

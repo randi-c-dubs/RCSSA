@@ -15,7 +15,13 @@
 
 #include "Camera.h"
 
-Camera::Camera() {}
+Camera::Camera() {
+	//open capture object at location zero (default location for webcam)
+	capture.open(0);
+	//set height and width of capture frame
+	capture.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
+	capture.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
+}
 
 Camera::~Camera() {}
 
@@ -57,16 +63,24 @@ void Camera::createTrackbars(){
 	createTrackbar( "V_MAX", trackbarWindowName, &V_MAX, V_MAX, on_trackbar );
 }
 
-void Camera::drawObject(vector<Object> theObjects, Mat &frame, Mat &temp, vector< vector<Point> > contours, vector<Vec4i> hierarchy, vector<Rect> boundRect){
-
+void Camera::drawObject(vector<Object> theObjects, Mat &frame, Mat &temp, vector< vector<Point> > contours, vector<Vec4i> hierarchy){
+	cv::Point p1;
+	cv::Point p2;
 	for(int i =0; i<theObjects.size(); i++){
+		// y - y0 = m(x - x0)
+		p1.x = theObjects.at(i).getVector()[2] - theObjects.at(i).getVector()[0] * FRAME_WIDTH; // 
+		p1.y = theObjects.at(i).getVector()[3] - theObjects.at(i).getVector()[1] * FRAME_HEIGHT; // 
+		p2.x = theObjects.at(i).getVector()[2] + theObjects.at(i).getVector()[0] * FRAME_WIDTH; // 
+		p2.y = theObjects.at(i).getVector()[3] + theObjects.at(i).getVector()[1] * FRAME_HEIGHT; // 
+
 		cv::drawContours(frame, contours, i, theObjects.at(i).getColor(), 3, 8, hierarchy);
-		cv::rectangle(frame, boundRect[i].tl(), boundRect[i].br(), theObjects.at(i).getColor(), 2, 8, 0);
+		cv::rectangle(frame, theObjects.at(i).getBoundRect().tl(), theObjects.at(i).getBoundRect().br(), theObjects.at(i).getColor(), 2, 8, 0);
 		cv::circle(frame,cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()),5,theObjects.at(i).getColor());
+		cv::line(frame, p1, p2, theObjects.at(i).getColor(), 2, 8);
 	cv::putText(frame,intToString(theObjects.at(i).getXPos())+ " , " + intToString(theObjects.at(i).getYPos()),cv::Point(theObjects.at(i).getXPos(),theObjects.at(i).getYPos()+20),1,1,theObjects.at(i).getColor());
 	cv::putText(frame, theObjects.at(i).getType(), cv::Point(theObjects.at(i).getXPos(), theObjects.at(i).getYPos() - 20), 1, 2, theObjects.at(i).getColor());
 	// Print shape info -- put in array
-	printf("%d %d\n", boundRect[i].size().height, boundRect[i].size().width);
+	printf("%d %d %f %f\n", theObjects.at(i).getBoundRect().size().height, theObjects.at(i).getBoundRect().size().width, theObjects.at(i).getVector()[0], theObjects.at(i).getVector()[1]);
 	}
 }
 
@@ -100,10 +114,12 @@ void Camera::trackFilteredObject(Object theObject, Mat threshold, Mat HSV, Mat &
 	vector<vector<Point> > contours_poly(contours.size());
 	/*** RANDI ***/
 	vector<Rect> boundRect(contours.size());
+	vector<Vec4f> line(contours.size());
 	for (int i = 0; i < contours.size(); i++)
 	{
 		approxPolyDP(Mat(contours[i]), contours_poly[i], 3, true);
 		boundRect[i] = boundingRect(Mat(contours_poly[i]));
+		fitLine(Mat(contours_poly[i]), line[i], CV_DIST_L2, 0, 0.01, 0.01);
 	}
 	//use moments method to find our filtered object
 	double refArea = 0;
@@ -127,6 +143,9 @@ void Camera::trackFilteredObject(Object theObject, Mat threshold, Mat HSV, Mat &
 					
 					object.setXPos((int) (moment.m10/area));
 					object.setYPos((int) (moment.m01/area));
+					object.setVector(line[index]);
+					object.setBoundRect(boundRect[index]);
+
 					object.setType(theObject.getType());
 					object.setColor(theObject.getColor());
 
@@ -139,29 +158,86 @@ void Camera::trackFilteredObject(Object theObject, Mat threshold, Mat HSV, Mat &
 			//let user know you found an object
 			if(objectFound == true){
 				//draw object location on screen
-				drawObject(objects,cameraFeed,temp,contours,hierarchy,boundRect);
+				drawObject(objects,cameraFeed,temp,contours,hierarchy);
 			}
 
 		}else putText(cameraFeed,"TOO MUCH NOISE! ADJUST FILTER",Point(0,50),1,2,Scalar(0,0,255),2);
 	}
 }
 
-void Camera::calibrateCamera() {
-	//Matrix to store each frame of the webcam feed
-	Mat cameraFeed;
-	Mat threshold;
-	Mat HSV;
+Object Camera::findObjectByColor(string color) {
+	capture.read(cameraFeed);
+	src = cameraFeed;
 
+	if (src.data) {
+
+		//convert frame from BGR to HSV colorspace
+		cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+		Object obj(color);
+
+		cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+		inRange(HSV, obj.getHSVmin(), obj.getHSVmax(), threshold);
+		morphOps(threshold);
+		trackFilteredObject(obj, threshold, HSV, cameraFeed);
+
+		return obj;
+	}
+	return NULL;
+}
+
+void Camera::seeObjects() {
+	waitKey(1000);
+	while (1){
+		//store image to matrix
+		capture.read(cameraFeed);
+
+		src = cameraFeed;
+
+		if (src.data) {
+
+			//convert frame from BGR to HSV colorspace
+			cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+			//create some temp fruit objects so that
+			//we can use their member functions/information
+			Object blue("orange"), yellow("yellow"), red("red"), green("green");
+
+			//first find blue objects
+			cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+			inRange(HSV, blue.getHSVmin(), blue.getHSVmax(), threshold);
+			morphOps(threshold);
+			trackFilteredObject(blue, threshold, HSV, cameraFeed);
+			//then yellows
+			cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+			inRange(HSV, yellow.getHSVmin(), yellow.getHSVmax(), threshold);
+			morphOps(threshold);
+			trackFilteredObject(yellow, threshold, HSV, cameraFeed);
+			//then reds
+			cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+			inRange(HSV, red.getHSVmin(), red.getHSVmax(), threshold);
+			morphOps(threshold);
+			trackFilteredObject(red, threshold, HSV, cameraFeed);
+			//then greens
+			cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
+			inRange(HSV, green.getHSVmin(), green.getHSVmax(), threshold);
+			morphOps(threshold);
+			trackFilteredObject(green, threshold, HSV, cameraFeed);
+
+			//show frames 
+			//imshow(windowName2,threshold);
+
+			imshow(windowName, cameraFeed);
+			//imshow(windowName1,HSV);
+
+			//delay 30ms so that screen can refresh.
+			//image will not appear without this waitKey() command
+			waitKey(30);
+		}
+	}
+}
+
+void Camera::calibrateCamera() {
 	//create slider bars HSV filtering
 	createTrackbars();
-
-	//video capture object to acquire webcam feed
-	VideoCapture capture; // downCapture;
-	//open capture object at location zero (default location for webcam)
-	capture.open(0);
-	//set height and width of capture frame
-	capture.set(CV_CAP_PROP_FRAME_WIDTH, FRAME_WIDTH);
-	capture.set(CV_CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT);
 	//start an infinite loop where webcam feed is copied to cameraFeed matrix
 	//all of our operations will be performed within this loop
 	waitKey(1000);

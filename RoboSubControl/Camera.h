@@ -44,9 +44,9 @@ public:
 	static const int FRAME_WIDTH = 640;
 	static const int FRAME_HEIGHT = 480;
 	//max number of objects to be detected in frame
-	static const int MAX_NUM_OBJECTS = 50;
+	static const int MAX_NUM_OBJECTS = 10;
 	//minimum and maximum object area
-	static const int MIN_OBJECT_AREA = 20 * 20;
+	static const int MIN_OBJECT_AREA = 50 * 50;
 	static const int MAX_OBJECT_AREA = (int)(FRAME_HEIGHT*FRAME_WIDTH / 1.5);
 	//names that will appear at the top of each window
 	const string windowName = "Original Image";
@@ -58,15 +58,23 @@ public:
 	Camera();
 	~Camera();
 
-	void drawObject(vector<Object>, Mat&, Mat&, vector< vector<Point> >, vector<Vec4i>, vector<Rect>);
+	void drawObject(vector<Object>, Mat&, Mat&, vector< vector<Point> >, vector<Vec4i>);
 	void morphOps(Mat&);
 	void trackFilteredObject(Object, Mat, Mat, Mat&);
 	void calibrateCamera();
+	Object findObjectByColor(string);
+	void seeObjects();
 	void createTrackbars();
 
 private:
 	string intToString(int number);
 
+	//Matrix to store each frame of the webcam feed
+	Mat cameraFeed;
+	Mat threshold;
+	Mat HSV;
+	//video capture object to acquire webcam feed
+	VideoCapture capture;
 
 	//The following for canny edge detection
 	Mat dst, detected_edges;

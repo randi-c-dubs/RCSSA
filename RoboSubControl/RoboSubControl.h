@@ -9,7 +9,7 @@
 #include "ConfigNullException.h"
 #include "Object.h"
 #include "Camera.h"
-#include "Task.h"
+#include "Motor.h"
 
 using namespace std;
 using namespace cv;
@@ -21,7 +21,9 @@ private:
 
 	// member fields
 	int mode;				// Mode submarine is in
+	int task;				// Current task submarine is executing (like a state)
 	Camera front;
+	Motor motor;
 
 	// utility functions
 public:
@@ -29,8 +31,10 @@ public:
 	static const int AVOID_OBJECTS = 2;
 	static const int COMPETITION = 3;
 
+	enum Tasks{ MoveStraight, FindRedBuoy, Done };
+
 	RoboSubControl(int);
-	~RoboSubControl();	// RoboSub Destructor?
+	~RoboSubControl();	// RoboSub Destructor
 	void startRoboSubControl();
 };
 
