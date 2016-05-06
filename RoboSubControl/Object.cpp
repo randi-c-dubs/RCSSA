@@ -5,23 +5,23 @@ Object::Object()
 	//set values for default constructor
 	setType("Object");
 	setColor(Scalar(0,0,0));
-
+	setFound(false);
 }
 
 Object::Object(string name){
 
 	setType(name);
-	
+	setFound(false);
 	if(name=="orange"){ //*** RANDI "orange" used to be "blue"
 
 		//TODO: use "calibration mode" to find HSV min
 		//and HSV max values
 
-		setHSVmin(Scalar(0,82,219));
-		setHSVmax(Scalar(14,256,256));
+		setHSVmin(Scalar(0,37,114));
+		setHSVmax(Scalar(7,146,256));
 
 		//BGR value for Green: //*** RANDI used to be 255,0,0
-		setColor(Scalar(0,128,128));
+		setColor(Scalar(0,128,255));
 
 	}
 	if(name=="green"){
@@ -29,15 +29,15 @@ Object::Object(string name){
 		//TODO: use "calibration mode" to find HSV min
 		//and HSV max values
 
-		setHSVmin(Scalar(95, 65, 212));
-		setHSVmax(Scalar(123, 188, 256));
+		setHSVmin(Scalar(37, 33, 102));
+		setHSVmax(Scalar(79, 214, 256));
 		
 		//setHSVmin(Scalar(72, 96, 107));
 		//setHSVmax(Scalar(132, 200, 242));
 
 
 
-		//BGR value for Yellow:
+		//BGR value for Green:
 		setColor(Scalar(0,255,0));
 
 	}
@@ -46,10 +46,10 @@ Object::Object(string name){
 		//TODO: use "calibration mode" to find HSV min
 		//and HSV max values
 
-		setHSVmin(Scalar(19,86,174));
-		setHSVmax(Scalar(42,256,256));
+		setHSVmin(Scalar(12,39,112));
+		setHSVmax(Scalar(49,256,245));
 
-		//BGR value for Red:
+		//BGR value for Yellow:
 		setColor(Scalar(0,255,255));
 
 	}
@@ -58,8 +58,8 @@ Object::Object(string name){
 		//TODO: use "calibration mode" to find HSV min
 		//and HSV max values
 
-		setHSVmin(Scalar(160,96,135));
-		setHSVmax(Scalar(256,256,256));
+		setHSVmin(Scalar(140,72,112));
+		setHSVmax(Scalar(256,193,256));
 
 		//BGR value for Red:
 		setColor(Scalar(0,0,255));

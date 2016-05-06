@@ -91,17 +91,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ConfigNullException.h" />
+    <ClInclude Include="Motor.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="RoboSubControl.h" />
-    <ClInclude Include="Task.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Motor.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="RoboSubControl.cpp" />
-    <ClCompile Include="Task.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

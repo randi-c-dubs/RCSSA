@@ -45,6 +45,12 @@ public:
 
 		Color = c;
 	}
+	void setFound(bool val) {
+		found = val;
+	}
+	bool isFound() {
+		return found;
+	}
 
 private:
 
@@ -54,5 +60,6 @@ private:
 	string type;
 	Scalar HSVmin, HSVmax;
 	Scalar Color;
+	bool found;
 };
 #endif

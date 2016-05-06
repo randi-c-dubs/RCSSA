@@ -60,10 +60,11 @@ public:
 
 	void drawObject(vector<Object>, Mat&, Mat&, vector< vector<Point> >, vector<Vec4i>);
 	void morphOps(Mat&);
-	void trackFilteredObject(Object, Mat, Mat, Mat&);
+	void trackFilteredObject(Object*, Mat, Mat, Mat&);
 	void calibrateCamera();
 	Object findObjectByColor(string);
-	void seeObjects();
+	vector< Object > findAllObjects();
+	vector< Object > seeObjects();
 	void createTrackbars();
 
 private:

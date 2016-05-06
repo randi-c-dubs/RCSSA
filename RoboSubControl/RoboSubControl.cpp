@@ -14,8 +14,9 @@ RoboSubControl::~RoboSubControl() {}
 void RoboSubControl::startRoboSubControl() {
 	int taskNum = 0, taskTotal = 0;
 
-	int x, y;
 	Object o;
+	vector< Object > objs;
+	bool VISIBLE = true;
 
 	switch (RoboSubControl::mode) {
 	case RoboSubControl::CALIBRATION:
@@ -23,32 +24,36 @@ void RoboSubControl::startRoboSubControl() {
 		break;
 
 	case RoboSubControl::AVOID_OBJECTS:
-		while (1) {
+		if (VISIBLE) {
+			waitKey(1000);
 			while (1) {
-				// Execute next step for task
-				/*o = front.findObjectByColor("blue");
-				if (o.getXPos() > 0 && o.getYPos() > 0)
-					cout << o.getXPos() << " " << o.getYPos() << endl;
-				else
-					cout << "No object" << endl;
-					*/
-				std::cout << "Looking for obstacles" << endl;
-				std::cout << "Deciding where to move" << endl;
-				std::cout << "Sending message to motors" << endl << endl;
+				objs = front.seeObjects();
+				if (objs.empty())	// If there are no objects in the scene then move straight
+					motor.moveStraight(255);
+				else	// Otherwise turn
+					motor.turnRight(255);
 			}
-			std::cout << "Done tasks!" << endl;
 		}
-
+		else {
+			while (1) {
+				// See if there are any objects in the scene
+				objs = front.findAllObjects();
+				if (objs.empty())	// If there are no objects then move straight
+					motor.moveStraight(255);
+				else	// Otherwise turn
+					motor.turnRight(255);
+			}
+		}
 		break;
 
 	case RoboSubControl::COMPETITION:
-		std::cout << "Task: " << RoboSubControl::task << endl;
-		while (RoboSubControl::task != RoboSubControl::Done) {
+		std::cout << "Task: " << task << endl;
+		while (task != RoboSubControl::Done) {
 			// Within each task we 1) get the information we need, 2) send response to the motors 3) update the task
-			switch (RoboSubControl::task) {
+			switch (task) {
 			case RoboSubControl::MoveStraight:
-				// Move forward
-				motor.moveStraight(255);
+				// Move forward Complementary filter?
+				//motor.moveStraight(255);
 
 				// After three feet
 				break;

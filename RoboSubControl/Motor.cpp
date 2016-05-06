@@ -16,22 +16,26 @@ Motor::~Motor(void)
 	// Close all connections to motors
 }
 
-void moveInDirection(int x, int y, int z, int r, int p, int w) { // <x,y,z> <roll, pitch, yaw>
+void Motor::moveInDirection(int x, int y, int z, int r, int p, int w) { // <x,y,z> <roll, pitch, yaw>
 }
 
-void moveStraight(int speed) {}
-void moveBackwards(int speed) {}
-void moveUp(int speed) {}
-void moveDown(int speed) {}
+void Motor::moveStraight(int speed) {
+	cout << "Going straigt" << endl;
+}
+void Motor::moveBackwards(int speed) {}
+void Motor::moveUp(int speed) {}
+void Motor::moveDown(int speed) {}
 
-void turnLeft(int speed) {}
-void turnRight(int speed) {}
+void Motor::turnLeft(int speed) {}
+void Motor::turnRight(int speed) {
+	cout << "Turn right" << endl;
+}
 
-void rollClockwise(int speed) { // Left motors down, right motors up
+void Motor::rollClockwise(int speed) { // Left motors down, right motors up
 }
-void rollCounterclockwise(int speed) { // vice versa
+void Motor::rollCounterclockwise(int speed) { // vice versa
 }
-void rollForward(int speed) { // front motors down, back motors up
+void Motor::rollForward(int speed) { // front motors down, back motors up
 }
-void rollBackward(int speed) { // vice versa
+void Motor::rollBackward(int speed) { // vice versa
 }
