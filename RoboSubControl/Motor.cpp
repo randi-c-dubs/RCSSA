@@ -21,6 +21,8 @@ void Motor::moveInDirection(int x, int y, int z, int r, int p, int w) { // <x,y,
 
 void Motor::moveStraight(int speed) {
 	cout << "Going straigt" << endl;
+	//m2.ser.write(1400);
+
 }
 void Motor::moveBackwards(int speed) {}
 void Motor::moveUp(int speed) {}

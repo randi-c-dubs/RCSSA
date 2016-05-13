@@ -10,6 +10,7 @@
 #include "Object.h"
 #include "Camera.h"
 #include "Motor.h"
+#include "Sonar.h"
 
 using namespace std;
 using namespace cv;
@@ -23,7 +24,8 @@ private:
 	int mode;				// Mode submarine is in
 	int task;				// Current task submarine is executing (like a state)
 	Camera front;
-	Motor motor;
+	Motor *motor;
+	Sonar *sonar;
 
 	// utility functions
 public:

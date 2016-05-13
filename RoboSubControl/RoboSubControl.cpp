@@ -2,11 +2,12 @@
 
 /**
 * This constructor creates a RoboSubControl object and sets up all sensors and task operation.
-* @mode is an integer [1] Full program, [2] Obstacle avoidance, [3] Calibration mode
+* @mode is an integer [3] Full program, [2] Obstacle avoidance, [1] Calibration mode
 */
 RoboSubControl::RoboSubControl(int mode) {
 	// Setup tasks based on mode
 	RoboSubControl::mode = mode;
+	RoboSubControl::sonar = new Sonar(L"\\\\.\\COM10");
 }
 
 RoboSubControl::~RoboSubControl() {}
@@ -15,6 +16,7 @@ void RoboSubControl::startRoboSubControl() {
 	int taskNum = 0, taskTotal = 0;
 
 	Object o;
+	int dist;
 	vector< Object > objs;
 	bool VISIBLE = true;
 
@@ -27,21 +29,24 @@ void RoboSubControl::startRoboSubControl() {
 		if (VISIBLE) {
 			waitKey(1000);
 			while (1) {
+				dist = sonar->getRangeReading();
+				cout << "Distance = " << dist << endl;
 				objs = front.seeObjects();
-				if (objs.empty())	// If there are no objects in the scene then move straight
-					motor.moveStraight(255);
+				if (objs.empty() && dist > 30)	// If there are no objects in the scene then move straight
+					motor->moveStraight(255);
 				else	// Otherwise turn
-					motor.turnRight(255);
+					motor->turnRight(255);
 			}
 		}
 		else {
 			while (1) {
 				// See if there are any objects in the scene
+				dist = sonar->getRangeReading();
 				objs = front.findAllObjects();
-				if (objs.empty())	// If there are no objects then move straight
-					motor.moveStraight(255);
+				if (objs.empty() && dist > 30)	// If there are no objects then move straight
+					motor->moveStraight(255);
 				else	// Otherwise turn
-					motor.turnRight(255);
+					motor->turnRight(255);
 			}
 		}
 		break;
