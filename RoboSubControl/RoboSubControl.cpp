@@ -7,6 +7,7 @@
 RoboSubControl::RoboSubControl(int mode) {
 	// Setup tasks based on mode
 	RoboSubControl::mode = mode;
+	RoboSubControl::front = new Camera();
 	RoboSubControl::sonar = new Sonar(L"\\\\.\\COM8");
 	RoboSubControl::imu = new IMU(L"\\\\.\\COM10");
 }
@@ -27,7 +28,7 @@ void RoboSubControl::startRoboSubControl() {
 
 	switch (RoboSubControl::mode) {
 	case RoboSubControl::CALIBRATION:
-		front.calibrateCamera();
+		front->calibrateCamera();
 		//imu->baselineIMU();
 		break;
 
@@ -37,7 +38,7 @@ void RoboSubControl::startRoboSubControl() {
 			while (1) {
 				dist = sonar->getRangeReading();
 				cout << "Distance = " << dist << endl;
-				objs = front.seeObjects();
+				objs = front->seeObjects();
 				if (objs.empty() && dist > 30)	// If there are no objects in the scene then move straight
 					motor->moveStraight(255);
 				else	// Otherwise turn
@@ -48,7 +49,7 @@ void RoboSubControl::startRoboSubControl() {
 			while (1) {
 				// See if there are any objects in the scene
 				dist = sonar->getRangeReading();
-				objs = front.findAllObjects();
+				objs = front->findAllObjects();
 				if (objs.empty() && dist > 30)	// If there are no objects then move straight
 					motor->moveStraight(255);
 				else	// Otherwise turn
