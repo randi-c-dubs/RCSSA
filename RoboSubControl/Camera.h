@@ -40,6 +40,11 @@ public:
 	int S_MAX = 256;
 	int V_MIN = 0;
 	int V_MAX = 256;
+	int mousex = 100;
+	int mousey = 100;
+	int NUMCOLORS = 3;
+	std::vector<Scalar> minHSVvalues, maxHSVvalues;
+	std::vector<string> colors;
 	//default capture width and height
 	static const int FRAME_WIDTH = 640;
 	static const int FRAME_HEIGHT = 480;
@@ -80,6 +85,7 @@ private:
 	//The following for canny edge detection
 	Mat dst, detected_edges;
 	Mat src, src_gray;
+	Mat hsv, imgThresh, processed, denoised;
 	int edgeThresh = 1;
 	int lowThreshold;
 	int const max_lowThreshold = 100;

@@ -41,9 +41,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Randi\Downloads\opencv\build\include;C:\Users\Randi\Downloads\opencv\build\include\opencv;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\NightFury\Downloads\opencv\build\include;C:\Users\NightFury\Downloads\opencv\build\include\opencv;$(IncludePath)</IncludePath>
     <ReferencePath>$(VC_ReferencesPath_x86);</ReferencePath>
     <ExecutablePath>$(VC_ExecutablePath_x86);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(SystemRoot)\SysWow86;$(FxCopDir);$(PATH);</ExecutablePath>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -64,7 +65,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);C:\Users\Randi\Downloads\opencv\build\x86\vc12\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories);C:\Users\NightFury\Downloads\opencv\build\x86\vc12\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies);opencv_core249d.lib;opencv_highgui249d.lib;opencv_imgproc249d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

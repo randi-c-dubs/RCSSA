@@ -238,35 +238,101 @@ vector< Object > Camera::seeObjects() {
 
 void Camera::calibrateCamera() {
 	//create slider bars HSV filtering
-	createTrackbars();
+	//createTrackbars();
 	//start an infinite loop where webcam feed is copied to cameraFeed matrix
 	//all of our operations will be performed within this loop
+	int click = 0;
 	waitKey(1000);
-	while (1){
+	while (click != NUMCOLORS){
+		int SZ = 20;
+		mousex = FRAME_WIDTH / 2;
+		mousey = FRAME_HEIGHT / 2;
 		//store image to matrix
 		capture.read(cameraFeed);
-
 		src = cameraFeed;
+		//STARTING COLOR CALIBRATION
+		//STEP1: Learning Phase
+		//remove noise
+		cv::GaussianBlur(src, denoised, cv::Size(5, 5), 2, 2);
+		cv::cvtColor(denoised, hsv, CV_BGR2HSV);
+		Point p1 = cv::Point(mousex - SZ, mousey - SZ);
+		Point p2 = cv::Point(mousex + SZ, mousey + SZ);
+		cv::rectangle(hsv, p1, p2, Scalar(255, 0, 0));
+
+		//show camerafeed
+		imshow(windowName, cameraFeed);
+
+		//pick arbitrary 100x100px region in the center
+		Rect region = cv::Rect(hsv.cols / 2 - SZ, hsv.rows / 2 - SZ, SZ * 2, SZ * 2);
+		cv::Mat roi = hsv(region);
+
+		//split channels to get hue only
+	std:vector<cv::Mat> hsvPlanes, hsvVal;
+		cv::split(roi, hsvPlanes);
+		imshow("hsv", hsv);
+		imshow("roi", roi);
+		cv::split(hsv, hsvVal);
+		//compute statsitics fo hue value
+		cv::Scalar meanH, stddevH, meanS, stddevS, meanV, stddevV;
+		cv::meanStdDev(hsvPlanes[0], meanH, stddevH);
+		cv::meanStdDev(hsvPlanes[1], meanS, stddevS);
+		cv::meanStdDev(hsvPlanes[2], meanV, stddevV);
+
+
+		float minHue = meanH[0] - stddevH[0] * .2;
+		float maxHue = meanH[0] + stddevH[0] * .2;
+		float minSat = meanS[0] - stddevS[0] * 4;
+		float maxSat = meanS[0] + stddevS[0] * 4;
+		float minVal = meanV[0] - stddevV[0] * 4;
+		float maxVal = meanV[0] + stddevV[0] * 4;
+
+		//cout << "minHue" << minHue << "maxHue" << maxHue << "\n";
+		//cout << "mean" << mean << "stddev" << stddev<<"\n";
+
+		//STEP 2: detection phase
+		cv::inRange(hsv, cv::Scalar(minHue, minSat, minVal), cv::Scalar(maxHue, maxSat, maxVal), imgThresh);
+		imshow("thresholded", imgThresh);
+
+		erode(imgThresh, processed, 5);  // minimizes noise
+		dilate(processed, processed, 20);  // maximize left regions
+
+		imshow("final", processed);
 
 		if (!src.data) {
 			break;
 		}
+
+
 		/* CAMERA CALIBRATION */
 		//need to find the appropriate color range values
-		
+
+
 		//if in calibration mode, we track objects based on the HSV slider values.
+		//convert image to HSV values
+		/*
 		cvtColor(cameraFeed, HSV, COLOR_BGR2HSV);
 		inRange(HSV, Scalar(Camera::H_MIN, Camera::S_MIN, Camera::V_MIN), Scalar(Camera::H_MAX, Camera::S_MAX, Camera::V_MAX), threshold);
 		morphOps(threshold);
 		imshow(Camera::windowName2, threshold);
-		
-		
-		//show frames 
-		imshow(windowName, cameraFeed);
+		*/
+
+
+
 
 		//delay 30ms so that screen can refresh.
 		//image will not appear without this waitKey() command
-		waitKey(30);
+		//record hsv values with each click
+		//each click represents a record of that color
+		int key = waitKey(30);
+		if (key != -1){
+			string color = "";
+			cout << "Enter Color: ";
+			getline(cin, color);
+			colors.push_back(color);
+			minHSVvalues.push_back(Scalar(minHue));
+			maxHSVvalues.push_back(Scalar(maxHue));
+			click++;
+		}
 	}
 }
 

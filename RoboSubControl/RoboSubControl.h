@@ -40,6 +40,8 @@ public:
 	RoboSubControl(int);
 	~RoboSubControl();	// RoboSub Destructor
 	void startRoboSubControl();
+	void RoboSubControl::setMode(int);
+
 };
 
 #endif

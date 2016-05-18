@@ -1,2 +1,2 @@
-#TargetFrameworkVersion=v4.0:PlatformToolSet=v120:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
-Debug|Win32|C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\|
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v120:EnableManagedIncrementalBuild=true:VCToolArchitecture=Native32Bit
+Debug|Win32|C:\Users\NightFury\Documents\GitHub\RCSSA\|
