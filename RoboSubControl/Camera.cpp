@@ -2,7 +2,7 @@
 
 // modified by: Ahmad Kaifi, Hassan Althobaiti
 
-// modified by Randi Williams
+// modified by Randi Williams, Kendall Queen
 
 //Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software")
 //, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
@@ -162,7 +162,14 @@ void Camera::trackFilteredObject(Object* theObject, Mat threshold, Mat HSV, Mat 
 	}
 }
 
-Object Camera::findObjectByColor(string color) {
+// function used to display text to original screen 
+void Camera::writeText(string text){
+	// makes text in the top left of camera feed image.
+	putText(cameraFeed, text, Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+
+}
+
+Object Camera::findObjectByColor(string color, string text)  {
 	capture.read(cameraFeed);
 	src = cameraFeed;
 
@@ -174,12 +181,15 @@ Object Camera::findObjectByColor(string color) {
 		inRange(HSV, obj.getHSVmin(), obj.getHSVmax(), threshold);
 		morphOps(threshold);
 		trackFilteredObject(&obj, threshold, HSV, cameraFeed);
-		if (obj.isFound()) return obj;
+		if (obj.isFound()){
+			putText(cameraFeed, text, Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+			return obj;
+		}
 	}
 	return NULL;
 }
 
-vector< Object > Camera::findAllObjects() {
+vector< Object > Camera::findAllObjects(string text) {
 	capture.read(cameraFeed);
 	vector< Object > objects;
 	src = cameraFeed;
@@ -211,14 +221,29 @@ vector< Object > Camera::findAllObjects() {
 		morphOps(threshold);
 		trackFilteredObject(&green, threshold, HSV, cameraFeed);
 
-		if (orange.isFound()) objects.push_back(orange);
-		if (yellow.isFound()) objects.push_back(yellow);
-		if (red.isFound()) objects.push_back(red);
-		if (green.isFound()) objects.push_back(green);
+		// display text from robosub control
+		putText(cameraFeed, text, Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+		if (orange.isFound()) objects.push_back(orange); // adjust parallel to rectangle
+		else if (yellow.isFound()){
+			// added text to show directions 
+			//putText(cameraFeed, "Yellow Found Move Right", Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+			objects.push_back(yellow);
+		}
+		else if (red.isFound()){
+			// added text to show directions 
+			//putText(cameraFeed, "RED Found CENTER ON OBJECT", Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+			objects.push_back(red); // hit red
+		}
+		else if (green.isFound()){
+			// added text to show directions 
+			//putText(cameraFeed, "GREEN Found STRIKE OBJECT", Point(0, 50), 1, 2, Scalar(0, 0, 255), 2);
+			objects.push_back(green); // hit green
+		}
+
 	}
 	return objects;
 }
-vector< Object > Camera::seeObjects() {
+vector< Object > Camera::seeObjects(string text) {
 	//store image to matrix
 	capture.read(cameraFeed);
 	vector< Object > objects;
@@ -226,7 +251,7 @@ vector< Object > Camera::seeObjects() {
 
 	if (src.data) {
 
-		objects = this->findAllObjects();
+		objects = this->findAllObjects(text);;
 		imshow(windowName, cameraFeed);
 			
 		//delay 30ms so that screen can refresh.

@@ -19,6 +19,10 @@ Motor::~Motor(void)
 void Motor::moveInDirection(int x, int y, int z, int r, int p, int w) { // <x,y,z> <roll, pitch, yaw>
 }
 
+void Motor::stop() {
+	cout << "Stopping" << endl;
+}
+
 void Motor::moveStraight(int speed) {
 	cout << "Going straigt" << endl;
 	//m2.ser.write(1400);
