@@ -1,7 +1,41 @@
-﻿Build started 5/18/2016 3:36:46 AM.
-     1>Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Randi\Downloads\opencv\build\x86\vc12\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opencv_core249d.lib opencv_highgui249d.lib opencv_imgproc249d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.lib" /MACHINE:X86 Debug\IMU.obj
+﻿Build started 5/18/2016 9:26:41 AM.
+     1>Project "C:\Users\NightFury\Documents\GitHub\RCSSA\RoboSubControl\RoboSubControl.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt IMU.cpp main.cpp Camera.cpp Motor.cpp Object.cpp RoboSubControl.cpp Serial.cpp Sonar.cpp
+         Sonar.cpp
+         Serial.cpp
+         RoboSubControl.cpp
+     1>c:\users\nightfury\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+         Object.cpp
+     1>c:\users\nightfury\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+         Motor.cpp
+         Camera.cpp
+     1>c:\users\nightfury\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(69): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(71): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(72): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(73): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(74): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(115): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(282): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(283): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(284): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(285): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(286): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(287): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\camera.cpp(270): warning C4102: 'std' : unreferenced label
+         main.cpp
+     1>c:\users\nightfury\downloads\opencv\build\include\opencv2\flann\logger.h(66): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\stdio.h(211) : see declaration of 'fopen'
+         IMU.cpp
+     1>c:\users\nightfury\documents\github\rcssa\robosubcontrol\imu.cpp(49): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+         Generating Code...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1192,5): warning MSB8012: TargetPath(C:\Users\NightFury\Documents\GitHub\RCSSA\Debug\RoboSubControl.exe) does not match the Linker's OutputFile property value (). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\NightFury\Downloads\opencv\build\x86\vc12\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opencv_core249d.lib opencv_highgui249d.lib opencv_imgproc249d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\NightFury\Documents\GitHub\RCSSA\Debug\RoboSubControl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\NightFury\Documents\GitHub\RCSSA\Debug\RoboSubControl.lib" /MACHINE:X86 Debug\IMU.obj
          Debug\main.obj
          Debug\Camera.obj
          Debug\Motor.obj
@@ -9,9 +43,9 @@
          Debug\RoboSubControl.obj
          Debug\Serial.obj
          Debug\Sonar.obj
-         RoboSubControl.vcxproj -> C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe
-     1>Done Building Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" (Build target(s)).
+         RoboSubControl.vcxproj -> C:\Users\NightFury\Documents\GitHub\RCSSA\Debug\RoboSubControl.exe
+     1>Done Building Project "C:\Users\NightFury\Documents\GitHub\RCSSA\RoboSubControl\RoboSubControl.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.53
+Time Elapsed 00:00:10.73
