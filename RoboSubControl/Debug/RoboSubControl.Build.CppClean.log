@@ -1,19 +1,21 @@
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\vc120.pdb
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\vc120.idb
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\camera.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\object.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\main.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\motor.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\serial.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\sonar.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\imu.obj
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\debug\robosubcontrol.ilk
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\debug\robosubcontrol.exe
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\debug\robosubcontrol.pdb
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\cl.command.1.tlog
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\cl.read.1.tlog
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\cl.write.1.tlog
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\link.command.1.tlog
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\link.read.1.tlog
-c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\debug\robosubcontrol.tlog\link.write.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\vc120.pdb
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\vc120.idb
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\imu.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\main.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\camera.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\motor.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\object.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\serial.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\sonar.obj
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\imu.ilk
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\imu.exe
+c:\users\nightfury\documents\github\rcssa\debug\robosubcontrol.pdb
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\cl.command.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\cl.read.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\cl.write.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\link.command.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\link.read.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\link.write.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\metagen.read.1.tlog
+c:\users\nightfury\documents\github\rcssa\robosubcontrol\debug\robosubcontrol.tlog\metagen.write.1.tlog

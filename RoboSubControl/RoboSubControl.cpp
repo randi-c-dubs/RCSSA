@@ -13,6 +13,10 @@ RoboSubControl::RoboSubControl(int mode) {
 
 RoboSubControl::~RoboSubControl() {}
 
+void RoboSubControl::setMode(int mode){
+	RoboSubControl::mode = mode;
+}
+
 void RoboSubControl::startRoboSubControl() {
 	int taskNum = 0, taskTotal = 0;
 
@@ -23,8 +27,8 @@ void RoboSubControl::startRoboSubControl() {
 
 	switch (RoboSubControl::mode) {
 	case RoboSubControl::CALIBRATION:
-		//front.calibrateCamera();
-		imu->baselineIMU();
+		front.calibrateCamera();
+		//imu->baselineIMU();
 		break;
 
 	case RoboSubControl::AVOID_OBJECTS:
