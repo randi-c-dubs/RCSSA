@@ -1,6 +1,11 @@
-﻿Build started 5/18/2016 3:36:46 AM.
+﻿Build started 5/18/2016 11:28:17 AM.
      1>Project "C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\RoboSubControl\RoboSubControl.vcxproj" on node 2 (Build target(s)).
-     1>Link:
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt IMU.cpp
+         IMU.cpp
+     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\imu.cpp(56): warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\randi\onedrive\documents\spring 2016\capstone\robosub\robosubcontrol\robosubcontrol\imu.cpp(103): warning C4700: uninitialized local variable 'token' used
+       Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Randi\Downloads\opencv\build\x86\vc12\lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib opencv_core249d.lib opencv_highgui249d.lib opencv_imgproc249d.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Randi\OneDrive\Documents\Spring 2016\Capstone\RoboSub\RoboSubControl\Debug\RoboSubControl.lib" /MACHINE:X86 Debug\IMU.obj
          Debug\main.obj
          Debug\Camera.obj
@@ -14,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.53
+Time Elapsed 00:00:02.06

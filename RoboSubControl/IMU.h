@@ -21,14 +21,14 @@ public:
 	IMU(wchar_t *portName);
 	~IMU(void);
 
-	float* IMU::getOrientation();
+	vector< float >IMU::getOrientation();
 	void IMU::baselineIMU();
 
 private:
 	Serial *ser;
 	void IMU::sort(float *, int);
-	float *IMU::split(char *);
-	float *baseline;
+	int IMU::split(char *, float *);
+	float baseline[6];
 
 };
 #endif

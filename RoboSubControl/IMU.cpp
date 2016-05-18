@@ -17,26 +17,33 @@ IMU::~IMU(void) {
 
 }
 
-float *IMU::getOrientation() {
-	const int dataLength = 255;
-	char *incomingData = (char *)malloc(sizeof(char) *256);			// don't forget to pre-allocate memory
+vector< float >IMU::getOrientation() {
+	const int dataLength = 59;
 	int readResult = 0;
-	float *token;
-	static float mag[3];
+	float *token = (float *)malloc(sizeof(char) * 6);
+	vector< float > mag;
+	bool flag = true;
+	int len;
 
-	readResult = ser->ReadData(incomingData, dataLength);
-	incomingData[readResult] = 0;
-
-	token = split(incomingData);
-	for (int i = 0; i < 3; i++) {
-		mag[i] = token[i] - baseline[i];
+	while (flag) {
+		char incomingData[60] = "";			// don't forget to pre-allocate memory
+		readResult = ser->ReadData(incomingData, dataLength);
+		incomingData[readResult] = 0;
+		if (readResult > 10)
+			cout << "Read" << incomingData << endl;
+		len = split(incomingData, token);
+		flag = (incomingData[0] != '$' || incomingData[2] != '$');
+		waitKey(500);
 	}
-	free(incomingData);
+	for (int i = 0; i < 3; i++) {
+		cout << token[i] << endl;
+		mag.insert(mag.begin(), token[i] - baseline[i]);
+	}
+	free(token);
 	return mag;
 }
 
-float* IMU::split(char *str) {
-	static float elems[6];
+int IMU::split(char *str, float *result) {
 	char * pch;
 	int i = 0;
 
@@ -44,13 +51,15 @@ float* IMU::split(char *str) {
 
 	cout << "Splitting string: " << *str << endl;
 	pch = strtok(str, " ");
-	while (pch != NULL)
+	while (pch != NULL && i<6)
 	{
-		elems[i] = atof(pch);
+		result[i] = atof(pch);
 		pch = strtok(NULL, " ");
 		i++;
 	}
-	return elems;
+	if (pch == NULL)
+		return i;
+	return i + 1;
 }
 
 void IMU::sort(float *array, int len) {
@@ -91,7 +100,7 @@ void IMU::baselineIMU() {
 			}
 		}
 		cout << "Char: " << incomingData << " " << readResult << endl;
-		token = split(incomingData);
+		split(incomingData, token);
 
 		magneto[0][i] = token[0];
 		magneto[1][i] = token[1];

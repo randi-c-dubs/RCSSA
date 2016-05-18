@@ -24,7 +24,7 @@ private:
 	// member fields
 	int mode;				// Mode submarine is in
 	int task;				// Current task submarine is executing (like a state)
-	Camera front;
+	Camera *front;
 	Motor *motor;
 	Sonar *sonar;
 	IMU *imu;
