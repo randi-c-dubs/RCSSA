@@ -11,6 +11,7 @@
 #include "Camera.h"
 #include "Motor.h"
 #include "Sonar.h"
+#include "IMU.h"
 
 using namespace std;
 using namespace cv;
@@ -26,6 +27,7 @@ private:
 	Camera front;
 	Motor *motor;
 	Sonar *sonar;
+	IMU *imu;
 
 	// utility functions
 public:

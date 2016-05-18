@@ -7,7 +7,8 @@
 RoboSubControl::RoboSubControl(int mode) {
 	// Setup tasks based on mode
 	RoboSubControl::mode = mode;
-	RoboSubControl::sonar = new Sonar(L"\\\\.\\COM10");
+	RoboSubControl::sonar = new Sonar(L"\\\\.\\COM8");
+	RoboSubControl::imu = new IMU(L"\\\\.\\COM10");
 }
 
 RoboSubControl::~RoboSubControl() {}
@@ -22,7 +23,8 @@ void RoboSubControl::startRoboSubControl() {
 
 	switch (RoboSubControl::mode) {
 	case RoboSubControl::CALIBRATION:
-		front.calibrateCamera();
+		//front.calibrateCamera();
+		imu->baselineIMU();
 		break;
 
 	case RoboSubControl::AVOID_OBJECTS:
